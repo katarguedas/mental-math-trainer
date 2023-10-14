@@ -4,19 +4,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap css -->
+  <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+  <link rel="stylesheet" href="../assets/css/custom.css" />
+
   <title>mental-math-trainer</title>
 </head>
 
 <body>
   <header>
-
+    <h1 class="d-flex justify-content-center border-bottom pb-3 mt-2 mb-2">Wie gut bist Du in Kopfrechnen?</h1>
   </header>
   <main>
+    <div id="calc-method" class="d-flex align-items-center flex-column border-bottom">
+      <p class="text-center fs-5 mt-3">Wähle die Rechenart:</p>
+      <div class="d-lg-flex justify-content-between mb-3 mt-1">
+        <button type="button" class="btn btn-info mx-2 calc-symbol" data-toggle="button">&#43</button>
+        <button type="button" class="btn btn-info mx-2 calc-symbol" data-toggle="button">&#8722;</button>
+        <button type="button" class="btn btn-info mx-2 calc-symbol" data-toggle="button">&#215</button>
+        <button type="button" class="btn btn-info mx-2 calc-symbol" data-toggle="button">&#xf7</button>
+      </div>
+    </div>
+    <div id="level" class="d-flex align-items-center flex-column border-bottom">
+      <p class="text-center fs-5 mt-3">Wähle den Schwierigkeitsgrad:</p>
+      <div class="btn-group mb-4 mt-1" role="group" aria-label="Basic mixed styles example">
+        <button type="button" class="btn btn-success">leicht</button>
+        <button type="button" class="btn btn-warning">mittel</button>
+        <button type="button" class="btn btn-danger">schwer</button>
+      </div>
+    </div>
+    <div id="time-setting" class="d-flex align-items-center flex-column border-bottom">
+      <p class="text-center fs-5 mt-3">Wähle die Zeit:</p>
+      <div class="btn-group mb-4" role="group" aria-label="Basic radio toggle button group">
+        <input type="radio" class="btn-check mx-2" name="btnradio" id="btnradio1" autocomplete="off" checked>
+        <label class="btn btn-outline-dark" for="btnradio1">1 Minute</label>
 
+        <input type="radio" class="btn-check mx-2" name="btnradio" id="btnradio2" autocomplete="off">
+        <label class="btn btn-outline-dark " for="btnradio2">2 Minuten</label>
+
+        <input type="radio" class="btn-check mx-2" name="btnradio" id="btnradio3" autocomplete="off">
+        <label class="btn btn-outline-dark " for="btnradio3">3 Minuten</label>
+      </div>
+    </div>
+    <div>
+      <p class="fs-4 text-center mt-3">Los geht's!</p>
+    </div>
+    <div id="counter" class="d-flex justify-content-evenly fs-4 m-4">
+      <div>Timer</div>
+      <div>
+        <span>0</span> / <span>0</span>
+      </div>
+    </div>
+    <div id="live-calculation" class="d-flex justify-content-center flex-row bg-info-subtle">
+      <div class="m-4">
+        <span class="fsc-1 text-dark bg-white rounded-4 px-5 pb-2 m-1">2</span>
+        <span class="fsc-1 text-dark bg-white bg-white rounded-4 px-4 pb-2 m-1">+</span>
+        <span class="fsc-1 text-dark bg-white rounded-4 px-5 pb-1 m-1">8</span>
+        <span class="fsc-1 text-dark bg-white rounded-4 px-4 pb-1 m-1">&#x3D</span>
+        <span class="fsc-1 text-primary bg-white rounded-4 px-5 pb-1 m-1">10</span>
+      </div>
+    </div>
+    <div id="result-message" class=" fs-2 m-4 text-center flex-column">
+      Ergebnis
+    </div>
   </main>
   <footer>
-
   </footer>
+  <!-- JavaScript -->
+  <!--Bootstrap JS -->
+  <script src="../assets/js/bootstrap.js"></script>
 </body>
 
 </html>
