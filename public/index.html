@@ -19,19 +19,22 @@
   <main>
     <div id="calc-method" class="d-flex align-items-center flex-column border-bottom">
       <p class="text-center fs-5 mt-3">Wähle die Rechenart:</p>
-      <div class="d-lg-flex justify-content-between mb-3 mt-1">
-        <button type="button" class="btn btn-info mx-2 calc-symbol" data-toggle="button">&#43</button>
-        <button type="button" class="btn btn-info mx-2 calc-symbol" data-toggle="button">&#8722;</button>
-        <button type="button" class="btn btn-info mx-2 calc-symbol" data-toggle="button">&#215</button>
-        <button type="button" class="btn btn-info mx-2 calc-symbol" data-toggle="button">&#xf7</button>
+      <div id="calc-method-buttons" class="d-lg-flex justify-content-between mb-3 mt-1">
+        <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="add" data-bs-toggle="button" aria-pressed="false">&#43</button>
+        <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="sub" data-bs-toggle="button" aria-pressed="false">&#8722;</button>
+        <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="mul"  data-bs-toggle="button" aria-pressed="false">&#215</button>
+        <button type="button" class="btn btn-outline-info mx-2 calc-symbol active" id="div" data-bs-toggle="button" aria-pressed="true">&#xf7</button>
       </div>
     </div>
     <div id="level" class="d-flex align-items-center flex-column border-bottom">
       <p class="text-center fs-5 mt-3">Wähle den Schwierigkeitsgrad:</p>
       <div class="btn-group mb-4 mt-1" role="group" aria-label="Basic mixed styles example">
-        <button type="button" class="btn btn-success">leicht</button>
-        <button type="button" class="btn btn-warning">mittel</button>
-        <button type="button" class="btn btn-danger">schwer</button>
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="button">
+          leicht</button>
+        <button type="button" class="btn btn-outline-warning" data-bs-toggle="button">
+          mittel</button>
+        <button type="button" class="btn btn-outline-danger" data-bs-toggle="button">
+          schwer</button>
       </div>
     </div>
     <div id="time-setting" class="d-flex align-items-center flex-column border-bottom">
@@ -74,6 +77,7 @@
   <!-- JavaScript -->
   <!--Bootstrap JS -->
   <script src="../assets/js/bootstrap.js"></script>
+  <script type="text/javascript" src="./dist/main.js"></script>
 </body>
 
 </html>
