@@ -20,13 +20,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/controller/Level.js":
+/*!*********************************!*\
+  !*** ./src/controller/Level.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\n\nfunction _typeof(o) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && \"function\" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? \"symbol\" : typeof o; }, _typeof(o); }\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\nfunction _toPropertyKey(arg) { var key = _toPrimitive(arg, \"string\"); return _typeof(key) === \"symbol\" ? key : String(key); }\nfunction _toPrimitive(input, hint) { if (_typeof(input) !== \"object\" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || \"default\"); if (_typeof(res) !== \"object\") return res; throw new TypeError(\"@@toPrimitive must return a primitive value.\"); } return (hint === \"string\" ? String : Number)(input); }\nvar Level = /*#__PURE__*/function () {\n  function Level(levelElement) {\n    _classCallCheck(this, Level);\n    this.levelElement = levelElement;\n    this.buttons = this.levelElement.querySelectorAll('button');\n  }\n  _createClass(Level, [{\n    key: \"init\",\n    value: function init() {\n      var _this = this;\n      this.buttons.forEach(function (btn) {\n        btn.addEventListener('click', function (event) {\n          _this.deactivateOthers(event.target.id);\n        });\n      });\n    }\n  }, {\n    key: \"deactivateOthers\",\n    value: function deactivateOthers(id) {\n      this.buttons.forEach(function (btn) {\n        var status = btn.getAttribute(\"aria-pressed\");\n        if (btn.id !== id && status === 'true') {\n          new bootstrap.Button(btn).toggle();\n        }\n      });\n    }\n  }]);\n  return Level;\n}();\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Level);\n\n//# sourceURL=webpack://mental-math-trainer/./src/controller/Level.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _controller_CalcMethod__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controller/CalcMethod */ \"./src/controller/CalcMethod.js\");\n\n\n\nvar calcMethod = new _controller_CalcMethod__WEBPACK_IMPORTED_MODULE_0__[\"default\"](document.getElementById(\"calc-method-buttons\"));\ncalcMethod.init();\n\n// calcMethod.getBtnActive()\n\n//# sourceURL=webpack://mental-math-trainer/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _controller_CalcMethod__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controller/CalcMethod */ \"./src/controller/CalcMethod.js\");\n/* harmony import */ var _controller_Level__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./controller/Level */ \"./src/controller/Level.js\");\n\n\n\n\nvar calcMethod = new _controller_CalcMethod__WEBPACK_IMPORTED_MODULE_0__[\"default\"](document.getElementById('calc-method-buttons'));\ncalcMethod.init();\nvar level = new _controller_Level__WEBPACK_IMPORTED_MODULE_1__[\"default\"](document.getElementById('level-buttons'));\nlevel.init();\n\n//# sourceURL=webpack://mental-math-trainer/./src/index.js?");
 
 /***/ })
 

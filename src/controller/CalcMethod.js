@@ -1,6 +1,5 @@
 "use strict"
 
-
 class CalcMethod {
 
   constructor(calcMethodElement) {
