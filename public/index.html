@@ -23,31 +23,26 @@
         <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="add" data-bs-toggle="button" aria-pressed="false">&#43</button>
         <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="sub" data-bs-toggle="button" aria-pressed="false">&#8722;</button>
         <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="mul"  data-bs-toggle="button" aria-pressed="false">&#215</button>
-        <button type="button" class="btn btn-outline-info mx-2 calc-symbol active" id="div" data-bs-toggle="button" aria-pressed="true">&#xf7</button>
+        <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="div" data-bs-toggle="button" aria-pressed="false">&#xf7</button>
       </div>
     </div>
     <div id="level" class="d-flex align-items-center flex-column border-bottom">
       <p class="text-center fs-5 mt-3">Wähle den Schwierigkeitsgrad:</p>
       <div id="level-buttons" class="btn-group mb-4 mt-1" role="group" aria-label="Basic mixed styles example">
-        <button type="button" class="btn btn-outline-success fw-bold" id="easy" data-bs-toggle="button"  aria-pressed="false">
+        <button type="button" class="btn btn-outline-success fw-bold" id="easy" data-bs-toggle="button" aria-pressed="false">
           leicht</button>
-        <button type="button" class="btn btn-outline-warning fw-bold" id="normal" data-bs-toggle="button"  aria-pressed="false">
+        <button type="button" class="btn btn-outline-warning fw-bold" id="normal" data-bs-toggle="button" aria-pressed="false">
           mittel</button>
-        <button type="button" class="btn btn-outline-danger fw-bold" id="hard" data-bs-toggle="button"  aria-pressed="false">
+        <button type="button" class="btn btn-outline-danger fw-bold" id="hard" data-bs-toggle="button" aria-pressed="false">
           schwer</button>
       </div>
     </div>
-    <div id="time-setting" class="d-flex align-items-center flex-column border-bottom">
+    <div id="duration" class="d-flex align-items-center flex-column border-bottom">
       <p class="text-center fs-5 mt-3">Wähle die Zeit:</p>
-      <div class="btn-group mb-4" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check mx-2" name="btnradio" id="btnradio1" autocomplete="off" checked>
-        <label class="btn btn-outline-dark" for="btnradio1">1 Minute</label>
-
-        <input type="radio" class="btn-check mx-2" name="btnradio" id="btnradio2" autocomplete="off">
-        <label class="btn btn-outline-dark " for="btnradio2">2 Minuten</label>
-
-        <input type="radio" class="btn-check mx-2" name="btnradio" id="btnradio3" autocomplete="off">
-        <label class="btn btn-outline-dark " for="btnradio3">3 Minuten</label>
+      <div id="duration-buttons" class=" mb-4">
+        <button type="button" class="btn btn-outline-dark mx-2" data-bs-toggle="button" aria-pressed="false" id="one-minute">1 Minute</button>
+        <button type="button" class="btn btn-outline-dark mx-2" data-bs-toggle="button" aria-pressed="false" id="two-minutes">2 Minuten</button>
+        <button type="button" class="btn btn-outline-dark mx-2" data-bs-toggle="button" aria-pressed="false" id="three-minutes">3 Minuten</button>
       </div>
     </div>
     <div>

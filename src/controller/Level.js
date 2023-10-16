@@ -1,27 +1,19 @@
 "use strict"
 
+import ButtonMethods from './ButtonMethods';
 
-class Level {
+
+class Level extends ButtonMethods {
+ 
   constructor(levelElement) {
+    super()
     this.levelElement = levelElement;
     this.buttons = this.levelElement.querySelectorAll('button');
   }
 
   init() {
-    this.buttons.forEach(btn => {
-      btn.addEventListener('click', event => {
-        this.deactivateOthers(event.target.id)
-      })
-    })
+    this.setEventListener(this.buttons)
   }
 
-  deactivateOthers(id) {
-    this.buttons.forEach(btn => {
-      const status = btn.getAttribute("aria-pressed")
-      if ((btn.id !== id) && (status === 'true')) {
-        new bootstrap.Button(btn).toggle()
-      }
-    })
-  }
 }
 export default Level;

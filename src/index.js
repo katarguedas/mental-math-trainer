@@ -2,6 +2,7 @@
 
 import CalcMethod from './controller/CalcMethod';
 import Level from './controller/Level';
+import Duration from './controller/Duration';
 
 
 const calcMethod = new CalcMethod(
@@ -15,3 +16,9 @@ const level = new Level(
 );
 
 level.init();
+
+const duration = new Duration(
+  document.getElementById('duration-buttons')
+);
+
+duration.init();

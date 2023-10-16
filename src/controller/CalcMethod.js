@@ -1,31 +1,21 @@
 "use strict"
 
-class CalcMethod {
+import ButtonMethods from './ButtonMethods';
+
+
+class CalcMethod extends ButtonMethods{
 
   constructor(calcMethodElement) {
+    super()
     this.calcMethodElement = calcMethodElement;
+    this.buttons = this.calcMethodElement.querySelectorAll('button');
   }
 
 
   init() {
-    let buttons = this.calcMethodElement.querySelectorAll('button')
-    buttons.forEach(btn => {
-      btn.addEventListener('click', event => {
-        this.deactivateOthers(event.target.id)
-      })
-    })
+    this.setEventListener(this.buttons)
   }
 
-
-  deactivateOthers(id) {
-    let buttons = this.calcMethodElement.querySelectorAll('button')
-    buttons.forEach(btn => {
-      const status = btn.getAttribute("aria-pressed")
-      if ((btn.id !== id) && (status === 'true')){
-        new bootstrap.Button(btn).toggle()
-      }
-    })
-  }
 }
 
 
