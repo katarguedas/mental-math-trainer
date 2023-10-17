@@ -1,11 +1,12 @@
 "use strict"
 
 class ButtonMethods {
-  
+
 
   setEventListener(buttons) {
     buttons.forEach(btn => {
       btn.addEventListener('click', event => {
+        event.preventDefault()
         this.deactivateOthers(buttons, event.target.id)
       })
     })
@@ -19,6 +20,17 @@ class ButtonMethods {
       }
     })
   }
+
+  getSelectedBtn() {
+    let selected = ""
+    this.buttons.forEach(btn => {
+      if (btn.getAttribute('aria-pressed') === 'true') {
+        selected = btn.id
+      }
+    })
+    return selected
+  }
+
 }
 
 export default ButtonMethods;

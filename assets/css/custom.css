@@ -9,3 +9,8 @@
 .fsc-1 {
   font-size: 3.0rem;
 }
+
+.start-btn:active {
+  -webkit-transform: translateY(1px);
+  transform: translateY(1px);
+}
