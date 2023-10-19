@@ -1,6 +1,8 @@
 "use strict"
 
 import ButtonMethods from './ButtonMethods';
+import EventEmitter from 'eventemitter3';
+
 
 
 class Level extends ButtonMethods {
@@ -9,10 +11,14 @@ class Level extends ButtonMethods {
     super()
     this.levelElement = levelElement;
     this.buttons = this.levelElement.querySelectorAll('button');
+    this.instruction = this.levelElement.querySelector('.instruction');
+
+    this.events = new EventEmitter();
+
   }
 
   init() {
-    this.setEventListener(this.buttons)
+    this.setEventListener()
   }
 
 }

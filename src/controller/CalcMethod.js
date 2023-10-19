@@ -1,6 +1,7 @@
 "use strict"
 
 import ButtonMethods from './ButtonMethods';
+import EventEmitter from 'eventemitter3';
 
 
 class CalcMethod extends ButtonMethods {
@@ -9,11 +10,15 @@ class CalcMethod extends ButtonMethods {
     super()
     this.calcMethodElement = calcMethodElement;
     this.buttons = this.calcMethodElement.querySelectorAll('button');
+    this.instruction = this.calcMethodElement.querySelector('.instruction')
+
+    this.events = new EventEmitter();
   }
 
   init() {
-    this.setEventListener(this.buttons)
+    this.setEventListener()
   }
+
 
 }
 

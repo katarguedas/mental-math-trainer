@@ -1,10 +1,43 @@
 
+#calc-method {
+  height: 10.0rem;
+}
+
+#calc-method-buttons {
+  position: absolute;
+  top: 8.5rem;
+}
+
+#level {
+  height: 9.0rem;
+}
+#level-buttons {
+  position: absolute;
+  top: 310px;
+}
+
+#duration {
+  height: 9.0rem;
+}
+#duration-buttons {
+  position: absolute;
+  top: 450px;
+}
+
+#live-calculation {
+  height: 7.5rem;
+}
+
+#game-cards {
+  position: absolute;
+  top:690px;
+}
+
 .calc-symbol{
   font-size: 2.0rem;
   /* border-radius: 0.75rem; */
   width: 4.0rem;
 }
-
 
 .fsc-1 {
   font-size: 3.0rem;
@@ -13,4 +46,17 @@
 .start-btn:active {
   -webkit-transform: translateY(1px);
   transform: translateY(1px);
+}
+
+.game-number-card{
+  height: 5.0rem;
+  width: 5.5rem;
+}
+.game-sign-card{
+  height: 5.0rem;
+  width: 4.0rem;
+}
+.game-result-card{
+  height: 5.0rem;
+  width: 7.0rem;
 }

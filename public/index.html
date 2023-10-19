@@ -18,52 +18,82 @@
   </header>
   <main>
     <div id="calc-method" class="d-flex align-items-center flex-column border-bottom">
-      <p class="text-center fs-5 mt-3">Wähle die Rechenart:</p>
-      <div id="calc-method-buttons" class="d-lg-flex justify-content-between mb-3 mt-1">
-        <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="add" data-bs-toggle="button" aria-pressed="false">&#43</button>
-        <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="sub" data-bs-toggle="button" aria-pressed="false">&#8722;</button>
-        <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="mul"  data-bs-toggle="button" aria-pressed="false">&#215</button>
-        <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="div" data-bs-toggle="button" aria-pressed="false">&#xf7</button>
+      <p class="d text-center text-danger fs-5 fw-bold mt-2 instruction">Wähle die Rechenart:</p>
+      <div id="calc-method-buttons" class="d-lg-flex justify-content-between mb-2">
+        <button type="button" class="btn btn-outline-info mx-2 calc-symbol active" id="add" data-bs-toggle="button"
+          aria-pressed="true">&#43</button>
+        <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="sub" data-bs-toggle="button"
+          aria-pressed="false">&#8722;</button>
+        <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="mul" data-bs-toggle="button"
+          aria-pressed="false">&#215</button>
+        <button type="button" class="btn btn-outline-info mx-2 calc-symbol" id="div" data-bs-toggle="button"
+          aria-pressed="false">&#xf7</button>
       </div>
     </div>
     <div id="level" class="d-flex align-items-center flex-column border-bottom">
-      <p class="text-center fs-5 mt-3">Wähle den Schwierigkeitsgrad:</p>
-      <div id="level-buttons" class="btn-group mb-4 mt-1" role="group" aria-label="Basic mixed styles example">
-        <button type="button" class="btn btn-outline-success fw-bold" id="easy" data-bs-toggle="button" aria-pressed="false">
+      <p class="d text-center text-danger fs-5 fw-bold mt-3 instruction">Wähle den Schwierigkeitsgrad:</p>
+      <div id="level-buttons" class="btn-group mb-4 " role="group" aria-label="Basic mixed styles example">
+        <button type="button" class="btn btn-outline-success fw-bold active" id="easy" data-bs-toggle="button"
+          aria-pressed="true">
           leicht</button>
-        <button type="button" class="btn btn-outline-warning fw-bold" id="normal" data-bs-toggle="button" aria-pressed="false">
+        <button type="button" class="btn btn-outline-warning fw-bold" id="normal" data-bs-toggle="button"
+          aria-pressed="false">
           mittel</button>
-        <button type="button" class="btn btn-outline-danger fw-bold" id="hard" data-bs-toggle="button" aria-pressed="false">
+        <button type="button" class="btn btn-outline-danger fw-bold" id="hard" data-bs-toggle="button"
+          aria-pressed="false">
           schwer</button>
       </div>
     </div>
     <div id="duration" class="d-flex align-items-center flex-column border-bottom">
-      <p class="text-center fs-5 mt-3">Wähle die Zeit:</p>
-      <div id="duration-buttons" class=" mb-4">
-        <button type="button" class="btn btn-outline-dark mx-2" data-bs-toggle="button" aria-pressed="false" id="one-minute">1 Minute</button>
-        <button type="button" class="btn btn-outline-dark mx-2" data-bs-toggle="button" aria-pressed="false" id="two-minutes">2 Minuten</button>
-        <button type="button" class="btn btn-outline-dark mx-2" data-bs-toggle="button" aria-pressed="false" id="three-minutes">3 Minuten</button>
+      <p class="d text-center text-danger fs-5 fw-bold mt-3 instruction">Wähle die Zeit:</p>
+      <div id="duration-buttons">
+        <button type="button" class="btn btn-outline-dark mx-2 active" data-bs-toggle="button" aria-pressed="true"
+          id="one-minute">1 Minute</button>
+        <button type="button" class="btn btn-outline-dark mx-2" data-bs-toggle="button" aria-pressed="false"
+          id="two-minutes">2 Minuten</button>
+        <button type="button" class="btn btn-outline-dark mx-2" data-bs-toggle="button" aria-pressed="false"
+          id="three-minutes">3 Minuten</button>
       </div>
     </div>
-    <div class="d-flex justify-content-center" >
-      <button type="button" id="start" class="btn btn-warning btn-lg fs-4 m-4 border border-secondary border-2 start-btn">Los geht's!</button>
+    <div id="start" class="d-flex justify-content-center">
+      <p class="d-none text-center text-danger fsc-2 fw-bold m-1" error-message>Einstellungen fehlen <span
+          style="font-size: 3.0rem">&#8679;</span></p>
+      <button type="button" id="start-btn"
+        class="btn btn-warning btn-lg fs-4 m-4 border border-secondary border-2 start-btn">Los geht's!</button>
+      <p class="d-none text-center text-danger fsc-2 fw-bold m-1" error-message><span
+          style="font-size: 3.0rem">&#8679;</span> Einstellungen fehlen</p>
     </div>
-    <div id="counter" class="d-flex justify-content-evenly fs-4 m-4">
-      <div>Timer</div>
-      <div>
-        <span>0</span> / <span>0</span>
+
+    <div id="live-calculation" class="d-flex align-items-center flex-column bg-info-subtle p-3 m-3">
+      <div class="game-cards d-flex flex-row">
+        <span class="fsc-1 text-center text-dark bg-white rounded-4 m-1 game-number-card" id="number1">
+          2</span>
+        <span class="fsc-1 text-center text-dark bg-white bg-white rounded-4 pb-1 m-1 game-sign-card" id="sign">
+          +</span>
+        <span class="fsc-1 text-center text-dark bg-white rounded-4 pb-1 m-1 game-number-card" id="number2">
+          8</span>
+        <span class="fsc-1 text-center text-dark bg-white rounded-4 pb-1 m-1 game-sign-card" id="equals">
+          &#x3D</span>
+        <!-- <span class="fsc-1 text-center text-primary bg-white rounded-4 pb-1 m-1 game-result-card" id="result">
+          10</span> -->
+
+        <input type="text" class=" fsc-1 text-center text-dark bg-white rounded-4 pb-1 m-1 game-result-card" value="?"
+          placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <!-- <button id="senden" class="btn btn-outline-secondary rounded-4 pb-1 m-1 " type="button"
+          id="button-addon1">Senden</button> -->
+
+        <!-- <input type="text" class="form-control" placeholder="" aria-label="Username"
+          aria-describedby="basic-addon1">
+          <span class="input-group-text" id="basic-addon1">?</span> -->
+      </div>
+      <div id="counter" class="d-none d-flex flex-row justify-content-between fs-4 mt-4 mb-2">
+        <div class="px-5 pt-2">Timer</div>
+        <div class="px-5 pt-2">
+          <span>0</span> / <span>0</span>
+        </div>
       </div>
     </div>
-    <div id="live-calculation" class="d-flex justify-content-center flex-row bg-info-subtle">
-      <div class="m-4">
-        <span class="fsc-1 text-dark bg-white rounded-4 px-5 pb-2 m-1">2</span>
-        <span class="fsc-1 text-dark bg-white bg-white rounded-4 px-4 pb-2 m-1">+</span>
-        <span class="fsc-1 text-dark bg-white rounded-4 px-5 pb-1 m-1">8</span>
-        <span class="fsc-1 text-dark bg-white rounded-4 px-4 pb-1 m-1">&#x3D</span>
-        <span class="fsc-1 text-primary bg-white rounded-4 px-5 pb-1 m-1">10</span>
-      </div>
-    </div>
-    <div id="result-message" class=" fs-2 m-4 text-center flex-column">
+    <div id="result-message" class="d-none fs-2 pt-5 text-center flex-column">
       Ergebnis
     </div>
   </main>

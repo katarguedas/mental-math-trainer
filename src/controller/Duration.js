@@ -1,18 +1,24 @@
 "use strict"
 
 import ButtonMethods from './ButtonMethods';
+import EventEmitter from 'eventemitter3';
 
 
-class Duration extends ButtonMethods{
-  
+
+class Duration extends ButtonMethods {
+
   constructor(durationElement) {
     super()
     this.durationElement = durationElement;
     this.buttons = this.durationElement.querySelectorAll('button');
+    this.instruction = this.durationElement.querySelector('.instruction')
+
+    this.events = new EventEmitter();
+
   }
 
   init() {
-    this.setEventListener(this.buttons)
+    this.setEventListener()
   }
 
 }
