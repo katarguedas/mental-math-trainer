@@ -25,12 +25,16 @@
 }
 
 #live-calculation {
-  height: 7.5rem;
+  /* height: 7.5rem; */
+  position: absolute;
+  /* margin-left: 0;
+  margin-right: 0; */
 }
 
-#game-cards {
+#counter {
+  height:3.0rem;
   position: absolute;
-  top:690px;
+  top: 590px;
 }
 
 .calc-symbol{

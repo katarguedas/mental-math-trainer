@@ -5,6 +5,7 @@ import Level from './controller/Level';
 import Duration from './controller/Duration';
 import StartButton from './controller/StartButton';
 import Game from './controller/Game';
+import Counter from './controller/Counter';
 
 
 const calcMethod = new CalcMethod(
@@ -33,7 +34,17 @@ const game = new Game(
   document.getElementById('counter'),
   document.getElementById('result-message')
 );
+
 game.init();
+
+
+const counter = new Counter(
+  document.getElementById('correctTasks'),
+  document.getElementById('allTasks')
+);
+
+game.events.on('counter', res => counter.incrementTasksCounter(res));
+
 
 calcMethod.events.on('select', () => {
 

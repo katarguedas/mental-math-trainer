@@ -63,9 +63,14 @@
       <p class="d-none text-center text-danger fsc-2 fw-bold m-1" error-message><span
           style="font-size: 3.0rem">&#8679;</span> Einstellungen fehlen</p>
     </div>
-
-    <div id="live-calculation" class="d-flex align-items-center flex-column bg-info-subtle p-3 m-3">
-      <div class="game-cards d-flex flex-row">
+    <div id="counter" class="d-none d-flex flex-row justify-content-between fs-4 mt-4 mb-2">
+      <div class="px-5 pt-2">Timer</div>
+      <div id="counter-items" class="px-5 pt-2">
+        <span id="correctTasks">0</span> / <span id="allTasks">0</span>
+      </div>
+    </div>
+    <div id="live-calculation" class="d-flex bg-info-subtle p-3 m-4">
+      <div class="game-cards d-flex flex-row justify-content-center align-items-center">
         <span class="fsc-1 text-center text-dark bg-white rounded-4 m-1 game-number-card" id="number1">
           2</span>
         <span class="fsc-1 text-center text-dark bg-white bg-white rounded-4 pb-1 m-1 game-sign-card" id="sign">
@@ -74,24 +79,10 @@
           8</span>
         <span class="fsc-1 text-center text-dark bg-white rounded-4 pb-1 m-1 game-sign-card" id="equals">
           &#x3D</span>
-        <!-- <span class="fsc-1 text-center text-primary bg-white rounded-4 pb-1 m-1 game-result-card" id="result">
-          10</span> -->
-
         <input type="text" class=" fsc-1 text-center text-dark bg-white rounded-4 pb-1 m-1 game-result-card" value="?"
-          placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-        <!-- <button id="senden" class="btn btn-outline-secondary rounded-4 pb-1 m-1 " type="button"
-          id="button-addon1">Senden</button> -->
+          placeholder="" aria-label="" aria-describedby="button-addon1">
+      </div>
 
-        <!-- <input type="text" class="form-control" placeholder="" aria-label="Username"
-          aria-describedby="basic-addon1">
-          <span class="input-group-text" id="basic-addon1">?</span> -->
-      </div>
-      <div id="counter" class="d-none d-flex flex-row justify-content-between fs-4 mt-4 mb-2">
-        <div class="px-5 pt-2">Timer</div>
-        <div class="px-5 pt-2">
-          <span>0</span> / <span>0</span>
-        </div>
-      </div>
     </div>
     <div id="result-message" class="d-none fs-2 pt-5 text-center flex-column">
       Ergebnis
@@ -101,7 +92,6 @@
   </footer>
   <!-- JavaScript -->
   <!--Bootstrap JS -->
-  <script src="../assets/js/bootstrap.js"></script>
   <script type="text/javascript" src="./dist/main.js"></script>
 </body>
 

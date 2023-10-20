@@ -49,12 +49,10 @@ class Game {
 
   init() {
     this.events.on('input', async (value, event) => {
-      let textColor = "";
-      value === this.result.toString() ? textColor = 'text-success' : textColor = 'text-danger';
+      const res = value === this.result.toString() ? true : false;
+      const textColor = value === this.result.toString() ? 'text-success' : 'text-danger';
+      this.events.emit('counter', res)
       await this.finishAndStart(textColor, event)
-        .then(res => {
-          // zähler hochzählen
-        })
     })
   }
 
