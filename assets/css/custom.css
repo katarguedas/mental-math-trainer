@@ -25,16 +25,23 @@
 }
 
 #live-calculation {
-  /* height: 7.5rem; */
   position: absolute;
-  /* margin-left: 0;
-  margin-right: 0; */
+
 }
 
 #counter {
   height:3.0rem;
   position: absolute;
   top: 590px;
+}
+
+#timer{
+  position: absolute;
+  left:-140px;
+}
+#counter-items{
+  position: absolute;
+  left: 10px;
 }
 
 .calc-symbol{

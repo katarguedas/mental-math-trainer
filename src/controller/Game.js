@@ -14,11 +14,6 @@ class Game {
     this.resultCard = this.gameCards[0].querySelector('.game-result-card')
     this.counter = counter;
     this.totalResult = totalResult;
-    this.time = {
-      'one-minute': 1 * 1000 * 60,
-      'two-minutes': 2 * 1000 * 60,
-      'three-minutes': 3 * 1000 * 60,
-    }
     this.numbers = {
       add: {
         easy: [[1, 9], [1, 19]],
@@ -41,6 +36,7 @@ class Game {
         hard: [[200, 900], [20, 400]]
       }
     }
+    this.gameEnd = false;
     this.parameter;
     this.input = undefined;
     this.result = undefined;
@@ -48,41 +44,69 @@ class Game {
   }
 
   init() {
-    this.events.on('input', async (value, event) => {
-      const res = value === this.result.toString() ? true : false;
-      const textColor = value === this.result.toString() ? 'text-success' : 'text-danger';
+    this.events.on('input', async (event) => {
+      const res = this.input === this.result.toString() ? true : false;
+      const textColor = this.input === this.result.toString() ? 'text-success' : 'text-danger';
+      console.log("res: ", res)
       this.events.emit('counter', res)
       await this.finishAndStart(textColor, event)
     })
   }
 
+  /**
+   * 
+   * @param {string} textColor 
+   * @param {Event} event 
+   */
   async finishAndStart(textColor, event) {
+    if (this.gameEnd)
+      return;
     this.resultCard.classList.replace('text-dark', textColor)
     setTimeout(() => {
       this.elements.forEach(e => e.innerText = "");
       this.resultCard.classList.replace(textColor, 'text-dark');
       event.target.value = "";
       this.play(this.parameter.method, this.parameter.level, this.parameter.duration)
-    }, 160)
+    }, 150)
   }
+
+
+  // enterListener(event) {
+  //   console.log(event)
+  //   if (event.keyCode === 13) {
+  //     this.input = event.target.value
+  //     this.events.emit('input', event)
+  //   }
+  // }
 
   setEventListener() {
-    this.resultCard.addEventListener('keydown', event => {
+    this.resultCard.addEventListener('keydown', event =>{
       if (event.keyCode === 13) {
         this.input = event.target.value
-        this.events.emit('input', this.input, event)
+        this.events.emit('input', event)
       }
-    })
+    }, true)
   }
 
-  play(method, level, duration) {
+  stop() {
+    this.gameEnd = true;
+    this.elements.forEach(e => e.innerText = "");
+    this.resultCard.setAttribute('disabled',"")
+  }
+
+  play(method, level, first=false) {
     this.parameter = {
       method: method,
       level: level,
-      duration: duration
     };
 
+    if (this.gameEnd)
+      return;
+    if(first){
+      setTimeout(()=>{},500)
+    }
     this.resultCard.value = ""
+    // this.setEventListener()
     this.counterViewOn(this.counter)
     this.resultCard.classList.add('text-dark')
     this.resultCard.focus()
@@ -119,7 +143,7 @@ class Game {
   addition(numbers) {
     let number1 = this.createRandomNumber(numbers).num1;
     let number2 = this.createRandomNumber(numbers).num2;
-    const sign = '0x002B';  // '0x2212' - minus; '0x00D7'; '0x00F7'
+    const sign = '0x002B';
     this.setCards(number1, number2, sign);
     this.result = number1 + number2;
   }

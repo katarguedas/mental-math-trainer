@@ -6,6 +6,7 @@ import Duration from './controller/Duration';
 import StartButton from './controller/StartButton';
 import Game from './controller/Game';
 import Counter from './controller/Counter';
+import Timer from './controller/Timer';
 
 
 const calcMethod = new CalcMethod(
@@ -37,7 +38,6 @@ const game = new Game(
 
 game.init();
 
-
 const counter = new Counter(
   document.getElementById('correctTasks'),
   document.getElementById('allTasks')
@@ -46,18 +46,20 @@ const counter = new Counter(
 game.events.on('counter', res => counter.incrementTasksCounter(res));
 
 
-calcMethod.events.on('select', () => {
+const timer = new Timer(document.getElementById('timer'))
 
+
+calcMethod.events.on('select', () => {
   start.selectionCheck(calcMethod.getSelectedBtn(calcMethod.buttons), level.getSelectedBtn(level.buttons), duration.getSelectedBtn(duration.buttons));
-})
+});
 
 level.events.on('select', () => {
   start.selectionCheck(calcMethod.getSelectedBtn(calcMethod.buttons), level.getSelectedBtn(level.buttons), duration.getSelectedBtn(duration.buttons));
-})
+});
 
 duration.events.on('select', () => {
   start.selectionCheck(calcMethod.getSelectedBtn(calcMethod.buttons), level.getSelectedBtn(level.buttons), duration.getSelectedBtn(duration.buttons));
-})
+});
 
 start.events.on('play', () => {
   const method = calcMethod.getSelectedBtn(calcMethod.buttons);
@@ -65,7 +67,11 @@ start.events.on('play', () => {
   const gameDuration = duration.getSelectedBtn(duration.buttons);
   if (start.selectionCheck(method, diffLevel, gameDuration)) {
     game.setEventListener()
-    game.play(method, diffLevel, gameDuration);
+    game.play(method, diffLevel, true);
+    timer.runTimer(gameDuration);
   };
+});
 
-})
+timer.events.on('timeout', () => {
+  game.stop();
+});

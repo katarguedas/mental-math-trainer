@@ -57,32 +57,33 @@
     </div>
     <div id="start" class="d-flex justify-content-center">
       <p class="d-none text-center text-danger fsc-2 fw-bold m-1" error-message>Einstellungen fehlen <span
-          style="font-size: 3.0rem">&#8679;</span></p>
+          style="font-size: 3.0rem">&#7c727799;</span></p>
       <button type="button" id="start-btn"
         class="btn btn-warning btn-lg fs-4 m-4 border border-secondary border-2 start-btn">Los geht's!</button>
       <p class="d-none text-center text-danger fsc-2 fw-bold m-1" error-message><span
           style="font-size: 3.0rem">&#8679;</span> Einstellungen fehlen</p>
     </div>
-    <div id="counter" class="d-none d-flex flex-row justify-content-between fs-4 mt-4 mb-2">
-      <div class="px-5 pt-2">Timer</div>
-      <div id="counter-items" class="px-5 pt-2">
-        <span id="correctTasks">0</span> / <span id="allTasks">0</span>
+    <div class="d-flex flex-column align-items-center">
+      <div id="counter" class="d-none d-flex flex-row fs-4 mt-4 mb-3">
+        <div id="timer" class="px-5 pt-2 text-start"></div>
+        <div id="counter-items" class="d-flex px-5 pt-2 ms-auto">
+          <span id="correctTasks" class="text-success">0</span> / <span id="allTasks">0</span>
+        </div>
       </div>
-    </div>
-    <div id="live-calculation" class="d-flex bg-info-subtle p-3 m-4">
-      <div class="game-cards d-flex flex-row justify-content-center align-items-center">
-        <span class="fsc-1 text-center text-dark bg-white rounded-4 m-1 game-number-card" id="number1">
-          2</span>
-        <span class="fsc-1 text-center text-dark bg-white bg-white rounded-4 pb-1 m-1 game-sign-card" id="sign">
-          +</span>
-        <span class="fsc-1 text-center text-dark bg-white rounded-4 pb-1 m-1 game-number-card" id="number2">
-          8</span>
-        <span class="fsc-1 text-center text-dark bg-white rounded-4 pb-1 m-1 game-sign-card" id="equals">
-          &#x3D</span>
-        <input type="text" class=" fsc-1 text-center text-dark bg-white rounded-4 pb-1 m-1 game-result-card" value="?"
-          placeholder="" aria-label="" aria-describedby="button-addon1">
+      <div id="live-calculation" class="d-flex bg-info-subtle p-3 m-5">
+        <div class="game-cards d-flex flex-row ">
+          <span class="fsc-1 text-center text-dark bg-white rounded-4 m-1 game-number-card" id="number1">
+            2</span>
+          <span class="fsc-1 text-center text-dark bg-white bg-white rounded-4 pb-1 m-1 game-sign-card" id="sign">
+            +</span>
+          <span class="fsc-1 text-center text-dark bg-white rounded-4 pb-1 m-1 game-number-card" id="number2">
+            8</span>
+          <span class="fsc-1 text-center text-dark bg-white rounded-4 pb-1 m-1 game-sign-card" id="equals">
+            &#x3D</span>
+          <input type="text" class=" fsc-1 text-center text-dark bg-white rounded-4 pb-1 m-1 game-result-card" value="?" name="input"
+            placeholder="" aria-label="" aria-describedby="button-addon1">
+        </div>
       </div>
-
     </div>
     <div id="result-message" class="d-none fs-2 pt-5 text-center flex-column">
       Ergebnis
