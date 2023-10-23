@@ -7,6 +7,7 @@ import StartButton from './controller/StartButton';
 import Game from './controller/Game';
 import Counter from './controller/Counter';
 import Timer from './controller/Timer';
+import Result from './controller/Result';
 
 
 const calcMethod = new CalcMethod(
@@ -33,7 +34,6 @@ start.init();
 const game = new Game(
   document.getElementById('live-calculation'),
   document.getElementById('counter'),
-  document.getElementById('result-message')
 );
 
 game.init();
@@ -46,7 +46,9 @@ const counter = new Counter(
 game.events.on('counter', res => counter.incrementTasksCounter(res));
 
 
-const timer = new Timer(document.getElementById('timer'))
+const timer = new Timer(document.getElementById('timer'));
+
+const result = new Result(document.getElementById('result-message'));
 
 
 calcMethod.events.on('select', () => {
@@ -74,4 +76,6 @@ start.events.on('play', () => {
 
 timer.events.on('timeout', () => {
   game.stop();
+  result.plotResult(counter.getResult());
 });
+

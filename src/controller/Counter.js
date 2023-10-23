@@ -20,6 +20,16 @@ class Counter {
   }
 
 
+
+  getResult(){
+    //
+    const res={
+      correct: this.correctTasks,
+      all: this. allTasks
+    }
+    return res
+  }
+
 }
 
 

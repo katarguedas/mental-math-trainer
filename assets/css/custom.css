@@ -44,6 +44,11 @@
   left: 10px;
 }
 
+#result-message{
+  position: absolute;
+  top: 800px;
+}
+
 .calc-symbol{
   font-size: 2.0rem;
   /* border-radius: 0.75rem; */

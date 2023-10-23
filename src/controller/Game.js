@@ -3,7 +3,7 @@
 import EventEmitter from 'eventemitter3';
 
 class Game {
-  constructor(gameboard, counter, totalResult) {
+  constructor(gameboard, counter) {
     this.gameboard = gameboard;
     this.gameCards = this.gameboard.getElementsByClassName('game-cards')
     this.elements = this.gameCards[0].querySelectorAll('span')
@@ -13,7 +13,6 @@ class Game {
     this.equal = this.elements[3]
     this.resultCard = this.gameCards[0].querySelector('.game-result-card')
     this.counter = counter;
-    this.totalResult = totalResult;
     this.numbers = {
       add: {
         easy: [[1, 9], [1, 19]],
@@ -47,7 +46,6 @@ class Game {
     this.events.on('input', async (event) => {
       const res = this.input === this.result.toString() ? true : false;
       const textColor = this.input === this.result.toString() ? 'text-success' : 'text-danger';
-      console.log("res: ", res)
       this.events.emit('counter', res)
       await this.finishAndStart(textColor, event)
     })
@@ -59,8 +57,10 @@ class Game {
    * @param {Event} event 
    */
   async finishAndStart(textColor, event) {
-    if (this.gameEnd)
+    if (this.gameEnd) {
+      this.counterViewOff(this.counter)
       return;
+    }
     this.resultCard.classList.replace('text-dark', textColor)
     setTimeout(() => {
       this.elements.forEach(e => e.innerText = "");
@@ -71,16 +71,8 @@ class Game {
   }
 
 
-  // enterListener(event) {
-  //   console.log(event)
-  //   if (event.keyCode === 13) {
-  //     this.input = event.target.value
-  //     this.events.emit('input', event)
-  //   }
-  // }
-
   setEventListener() {
-    this.resultCard.addEventListener('keydown', event =>{
+    this.resultCard.addEventListener('keydown', event => {
       if (event.keyCode === 13) {
         this.input = event.target.value
         this.events.emit('input', event)
@@ -90,23 +82,25 @@ class Game {
 
   stop() {
     this.gameEnd = true;
+    this.counterViewOff(this.counter)
     this.elements.forEach(e => e.innerText = "");
-    this.resultCard.setAttribute('disabled',"")
+    this.resultCard.setAttribute('disabled', "");
   }
 
-  play(method, level, first=false) {
+  play(method, level, first = false) {
     this.parameter = {
       method: method,
       level: level,
     };
 
-    if (this.gameEnd)
+    if (this.gameEnd) {
+      this.counterViewOff(this.counter)
       return;
-    if(first){
-      setTimeout(()=>{},500)
+    }
+    if (first) {
+      setTimeout(() => { }, 500)
     }
     this.resultCard.value = ""
-    // this.setEventListener()
     this.counterViewOn(this.counter)
     this.resultCard.classList.add('text-dark')
     this.resultCard.focus()
@@ -131,6 +125,12 @@ class Game {
   counterViewOn(element) {
     if (element.classList.contains('d-none')) {
       element.classList.replace('d-none', 'd')
+    }
+  }
+
+  counterViewOff(element) {
+    if (element.classList.contains('d')) {
+      element.classList.replace('d', 'd-none')
     }
   }
 

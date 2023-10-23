@@ -16,7 +16,8 @@ class Timer {
   }
 
   runTimer(duration) {
-    let time = this.time[duration];
+    // let time = this.time[duration];
+    let time=6
     this.timerElement.innerText = this.getDur(time);
     time = time - 1;
     this.showTimer = setInterval(() => {
