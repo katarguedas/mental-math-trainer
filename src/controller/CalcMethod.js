@@ -5,7 +5,10 @@ import EventEmitter from 'eventemitter3';
 
 
 class CalcMethod extends ButtonMethods {
-
+  /**
+   * 
+   * @param {HTMLDivElement} calcMethodElement 
+   */
   constructor(calcMethodElement) {
     super()
     this.calcMethodElement = calcMethodElement;

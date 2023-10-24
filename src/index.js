@@ -34,6 +34,7 @@ start.init();
 const game = new Game(
   document.getElementById('live-calculation'),
   document.getElementById('counter'),
+  document.querySelector('.inputTooltip')
 );
 
 game.init();
@@ -79,3 +80,6 @@ timer.events.on('timeout', () => {
   result.plotResult(counter.getResult());
 });
 
+timer.events.on('gameIsRunning', (state)=>{
+  start.setGameIsRunning(state);
+})

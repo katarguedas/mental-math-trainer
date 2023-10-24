@@ -1,6 +1,5 @@
-
 #calc-method {
-  height: 10.0rem;
+  height: 10rem;
 }
 
 #calc-method-buttons {
@@ -9,54 +8,65 @@
 }
 
 #level {
-  height: 9.0rem;
+  height: 9rem;
 }
+
 #level-buttons {
   position: absolute;
   top: 310px;
 }
 
 #duration {
-  height: 9.0rem;
+  height: 9rem;
 }
 #duration-buttons {
   position: absolute;
   top: 450px;
 }
 
+.error-message {
+  height: 4rem;
+}
+
 #live-calculation {
   position: absolute;
-
+  top: 710px;
 }
 
 #counter {
-  height:3.0rem;
+  height: 3rem;
   position: absolute;
-  top: 590px;
+  top: 640px;
 }
 
-#timer{
+#timer {
   position: absolute;
-  left:-140px;
+  left: -140px;
 }
-#counter-items{
+#counter-items {
   position: absolute;
   left: 10px;
 }
 
-#result-message{
+#result-message {
   position: absolute;
-  top: 800px;
+  top: 850px;
 }
 
-.calc-symbol{
-  font-size: 2.0rem;
+.calc-symbol {
+  font-size: 2rem;
   /* border-radius: 0.75rem; */
-  width: 4.0rem;
+  width: 4rem;
+}
+
+.inputTooltip {
+  position: absolute;
+  top: 790px;
+  left: 50%;
 }
 
 .fsc-1 {
-  font-size: 3.0rem;
+  font-size: 3rem;
 }
 
 .start-btn:active {
@@ -64,15 +74,33 @@
   transform: translateY(1px);
 }
 
-.game-number-card{
-  height: 5.0rem;
+.game-number-card {
+  height: 5rem;
   width: 5.5rem;
 }
-.game-sign-card{
-  height: 5.0rem;
-  width: 4.0rem;
+.game-sign-card {
+  height: 5rem;
+  width: 4rem;
 }
-.game-result-card{
-  height: 5.0rem;
-  width: 7.0rem;
+.game-result-card {
+  height: 5rem;
+  width: 7rem;
+}
+
+@media (max-width: 576px) {
+  .game-number-card {
+    height: 3.5rem;
+    width: 4.5rem;
+    font-size: 2rem;
+  }
+  .game-sign-card {
+    height: 3.5rem;
+    width: 3rem;
+    font-size: 2rem;
+  }
+  .game-result-card {
+    height: 3.5rem;
+    width: 6rem;
+    font-size: 2rem;
+  }
 }

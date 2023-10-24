@@ -4,9 +4,11 @@ import ButtonMethods from './ButtonMethods';
 import EventEmitter from 'eventemitter3';
 
 
-
 class Duration extends ButtonMethods {
-
+  /**
+   * 
+   * @param {HTMLDivElement} durationElement 
+   */
   constructor(durationElement) {
     super()
     this.durationElement = durationElement;

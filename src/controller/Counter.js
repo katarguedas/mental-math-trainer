@@ -2,6 +2,11 @@
 
 
 class Counter {
+  /**
+   * 
+   * @param {HTMLSpanElement} correctTaskElement 
+   * @param {HTMLSpanElement} allTasksElement 
+   */
   constructor(correctTaskElement, allTasksElement) {
     this.correctTaskElement = correctTaskElement;
     this.allTasksElement = allTasksElement;
@@ -9,6 +14,10 @@ class Counter {
     this.correctTasks = 0;
   }
 
+  /**
+   * 
+   * @param {boolean} res 
+   */
   incrementTasksCounter(res) {
     if (res) {
       this.correctTasks++;
@@ -20,12 +29,15 @@ class Counter {
   }
 
 
-
-  getResult(){
+  /**
+   * 
+   * @returns Object which contains the results: number of corrected Tasks and all done tasks
+   */
+  getResult() {
     //
-    const res={
+    const res = {
       correct: this.correctTasks,
-      all: this. allTasks
+      all: this.allTasks
     }
     return res
   }

@@ -1,9 +1,10 @@
 "use strict"
 
-
 class ButtonMethods {
 
-
+  /**
+   * sets eventListender to the Buttons 
+   */
   setEventListener() {
     this.buttons.forEach(btn => {
       btn.addEventListener('click', event => {
@@ -15,6 +16,9 @@ class ButtonMethods {
     })
   }
 
+  /**
+   * checks if one button is selected to be able to turn off the instructions
+   */
   checkInstructions() {
     let selected = false;
     this.buttons.forEach(btn => {
@@ -22,11 +26,13 @@ class ButtonMethods {
         selected = true;
       }
     })
-
     selected === true ? this.instructionOff() : this.instructionOn();
   }
 
-
+  /**
+   * 
+   * @param {string} id 
+   */
   deactivateOthers(id) {
     this.buttons.forEach(btn => {
       const status = btn.getAttribute("aria-pressed")
@@ -36,6 +42,11 @@ class ButtonMethods {
     })
   }
 
+  /**
+   * returns the id of the selected button
+   * @param {HTMLButtonElements} buttons 
+   * @returns string
+   */
   getSelectedBtn(buttons) {
     let select = ""
     if (buttons) {
@@ -48,10 +59,16 @@ class ButtonMethods {
     return select
   }
 
+  /**
+   * turn on the instructions for the buttons
+   */
   instructionOn() {
     this.instruction.classList.replace('d-none', 'd')
   }
 
+  /**
+ * turn off the instructions for the buttons
+ */
   instructionOff() {
     this.instruction.classList.replace('d', 'd-none')
   }

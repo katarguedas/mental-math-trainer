@@ -3,7 +3,13 @@
 import EventEmitter from 'eventemitter3';
 
 class Game {
-  constructor(gameboard, counter) {
+  /**
+   * 
+   * @param {HTMLDivElement} gameboard 
+   * @param {HTMLDivElement} counter 
+   * @param {HTMLParagraphElement} tooltip 
+   */
+  constructor(gameboard, counter, tooltip) {
     this.gameboard = gameboard;
     this.gameCards = this.gameboard.getElementsByClassName('game-cards')
     this.elements = this.gameCards[0].querySelectorAll('span')
@@ -13,6 +19,7 @@ class Game {
     this.equal = this.elements[3]
     this.resultCard = this.gameCards[0].querySelector('.game-result-card')
     this.counter = counter;
+    this.toolTip = tooltip;
     this.numbers = {
       add: {
         easy: [[1, 9], [1, 19]],
@@ -25,23 +32,26 @@ class Game {
         hard: [[200, 900], [101, 199]]
       },
       mul: {
-        easy: [[1, 9], [1, 9]],
+        easy: [[2, 9], [1, 10]],
         normal: [[5, 20], [6, 11]],
         hard: [[11, 25], [11, 99]]
       },
       div: {
-        easy: [[2, 20], [2, 10]],
-        normal: [[10, 100], [10, 80]],
+        easy: [[4, 40], [2, 10]],
+        normal: [[9, 90], [10, 80]],
         hard: [[200, 900], [20, 400]]
       }
     }
     this.gameEnd = false;
-    this.parameter;
+    this.paramter;
     this.input = undefined;
     this.result = undefined;
     this.events = new EventEmitter();
   }
 
+  /**
+   * 
+   */
   init() {
     this.events.on('input', async (event) => {
       const res = this.input === this.result.toString() ? true : false;
@@ -66,38 +76,66 @@ class Game {
       this.elements.forEach(e => e.innerText = "");
       this.resultCard.classList.replace(textColor, 'text-dark');
       event.target.value = "";
-      this.play(this.parameter.method, this.parameter.level, this.parameter.duration)
+      this.play(this.parameter.method, this.parameter.level)
     }, 150)
   }
 
-
+  /**
+   * sets an eventListener to the 'result-input-card'
+   * and emits an event after entering an user input
+   */
   setEventListener() {
     this.resultCard.addEventListener('keydown', event => {
       if (event.keyCode === 13) {
-        this.input = event.target.value
-        this.events.emit('input', event)
+        if (event.target.value === "") {
+          this.showTooltip()
+        } else {
+          this.input = event.target.value
+          this.events.emit('input', event)
+        }
       }
     }, true)
   }
 
+  /**
+   * shows an information when the iputfield was sended without input
+   */
+  showTooltip() {
+    console.log(this.toolTip)
+    this.toolTip.classList.replace('d-none', 'd')
+    setTimeout(() => {
+      this.toolTip.classList.replace('d', 'd-none')
+    }, 1200)
+  }
+
+  /**
+   * stops and terminate the game
+   */
   stop() {
     this.gameEnd = true;
     this.counterViewOff(this.counter)
     this.elements.forEach(e => e.innerText = "");
+    this.resultCard.value = "";
     this.resultCard.setAttribute('disabled', "");
   }
 
-  play(method, level, first = false) {
+  /**
+   * starts the game according to the user parameter
+   * @param {string} method 
+   * @param {string} level 
+   * @param {boolean} isFirst (optional)
+   * @returns 
+   */
+  play(method, level, isFirst = false) {
     this.parameter = {
       method: method,
-      level: level,
-    };
-
+      level: level
+    }
     if (this.gameEnd) {
       this.counterViewOff(this.counter)
       return;
     }
-    if (first) {
+    if (isFirst) {
       setTimeout(() => { }, 500)
     }
     this.resultCard.value = ""
@@ -122,27 +160,43 @@ class Game {
   }
 
 
+  /**
+   * shows the counter
+   * @param {HTMLDivElement} element 
+   */
   counterViewOn(element) {
     if (element.classList.contains('d-none')) {
       element.classList.replace('d-none', 'd')
     }
   }
 
+  /**
+   * 
+   * @param {HTMLDivElement} element 
+   */
   counterViewOff(element) {
     if (element.classList.contains('d')) {
       element.classList.replace('d', 'd-none')
     }
   }
 
-  createRandomNumber(numbers) {
-    const num1 = Math.floor((Math.random() * numbers[0][1]) + numbers[0][0]);
-    const num2 = Math.floor((Math.random() * numbers[1][1]) + numbers[1][0]);
-    return { num1, num2 }
+  /**
+   * create a random number according to the selected difficult level and calculation method
+   * @param {Object} numbers 
+   * @param {number} index 
+   * @returns 
+   */
+  getRandomNumber(numbers, index) {
+    return Math.floor((Math.random() * numbers[index][1]) + numbers[index][0]);
   }
 
+  /**
+   * 
+   * @param {Object} numbers 
+   */
   addition(numbers) {
-    let number1 = this.createRandomNumber(numbers).num1;
-    let number2 = this.createRandomNumber(numbers).num2;
+    let number1 = this.getRandomNumber(numbers, 0);
+    let number2 = this.getRandomNumber(numbers, 1);
     const sign = '0x002B';
     this.setCards(number1, number2, sign);
     this.result = number1 + number2;
@@ -151,8 +205,8 @@ class Game {
   subtraction(numbers) {
     let number1, number2;
     do {
-      number1 = this.createRandomNumber(numbers).num1;
-      number2 = this.createRandomNumber(numbers).num2;
+      number1 = this.getRandomNumber(numbers, 0);
+      number2 = this.getRandomNumber(numbers, 1);
     } while ((number1 < number2) || (number1 === number2))
     const sign = '0x2212';
     this.setCards(number1, number2, sign);
@@ -160,9 +214,8 @@ class Game {
   }
 
   multiplication(numbers) {
-    let number1, number2;
-    number1 = this.createRandomNumber(numbers).num1;
-    number2 = this.createRandomNumber(numbers).num2;
+    let number1 = this.getRandomNumber(numbers, 0);
+    let number2 = this.getRandomNumber(numbers, 1);
     const sign = '0x00D7';
     this.setCards(number1, number2, sign);
     this.result = number1 * number2;
@@ -171,8 +224,8 @@ class Game {
   division(numbers) {
     let number1, number2;
     do {
-      number1 = this.createRandomNumber(numbers).num1;
-      number2 = this.createRandomNumber(numbers).num2;
+      number1 = this.getRandomNumber(numbers, 0);
+      number2 = this.getRandomNumber(numbers, 1);
     } while (((number1 % number2) !== 0) || (number1 === number2))
 
     const sign = '0x00F7';
@@ -180,6 +233,12 @@ class Game {
     this.result = number1 / number2;
   }
 
+  /**
+   * 
+   * @param {number} number1 
+   * @param {number} number2 
+   * @param {string} sign 
+   */
   setCards(number1, number2, sign) {
     this.number1.innerText = number1
     this.sign.innerText = String.fromCharCode(sign)

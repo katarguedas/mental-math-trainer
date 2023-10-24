@@ -3,10 +3,11 @@
 import ButtonMethods from './ButtonMethods';
 import EventEmitter from 'eventemitter3';
 
-
-
 class Level extends ButtonMethods {
- 
+  /**
+   * 
+   * @param {HTMLDivElement} levelElement 
+   */
   constructor(levelElement) {
     super()
     this.levelElement = levelElement;
